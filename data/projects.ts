@@ -10,68 +10,54 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Mimori",
+    title: "GradeGenie",
     description:
-      "distributed kv store built in go using the raft consensus algorithm. explores leader election, log replication, snapshots, membership changes and observability.",
-    tags: ["Go", "Raft", "gRPC", "Prometheus", "Grafana"],
-    repoLink: "https://github.com/jerkeyray/mimori.git",
+      "A precise grade calculator built by an IITM BS student for fellow students.",
+    tags: ["Web App", "Grade Calculator", "Student Tools"],
+    sourceLink: "https://gradegenie.vercel.app",
+    repoLink: "https://github.com/aloktripathi1/gradegenie",
   },
   {
-    title: "Pika Language Interpreter",
+    title: "Learnsy",
     description:
-      "interpreter for my programming language written in go. built to learn parsing, evaluation and language design.",
-    tags: ["Go", "Interpreters", "Parsing"],
-    repoLink: "https://github.com/jerkeyray/pika-interpreter.git",
+      "A distraction-free, YouTube-powered study platform designed for deep learning, habit-building, and knowledge retention.",
+    tags: ["Next.js", "YouTube API", "Education", "Study Platform"],
+    sourceLink: "https://learnsy.vercel.app",
+    repoLink: "https://github.com/aloktripathi1/Learnsy",
   },
   {
-    title: "Yudoku",
+    title: "Hospital Management System",
     description:
-      "a focused learning web app that turns youtube playlists into structured, finite courses. designed around progress, flow, and completion rather than engagement.",
-    tags: ["Typescript", "Next.js", "Supabase", "Prisma", "Tailwind CSS"],
-    sourceLink: "https://yudoku.jerkeyray.com/",
-    repoLink: "https://github.com/jerkeyray/yudoku",
+      "A hospital management web app for managing appointments, patient records, and doctor schedules. Built with Flask, Vue.js, SQLite, and Celery.",
+    tags: ["Flask", "Vue.js", "SQLite", "Celery", "IIT Madras Project"],
+    repoLink: "https://github.com/aloktripathi1/hospital-management-system",
   },
   {
-    title: "Walrus",
+    title: "LLM Viva Assistant",
     description:
-      "persistent key-value store in go with a custom write-ahead log. built to explore crash recovery, corruption handling, batching and log segmentation.",
-    tags: ["Go"],
-    repoLink: "https://github.com/jerkeyray/walrus.git",
+      "An AI-powered assistant to help students prepare for viva examinations.",
+    tags: ["LLM", "AI", "Education"],
+    repoLink: "https://github.com/aloktripathi1/llm-viva-assistant",
   },
   {
-    title: "Dory",
+    title: "ChatGPT Organizer",
     description:
-      "ffmpeg based video utility cli built in go. a small tool for experimenting with cli structure and file processing.",
-    tags: ["Go", "ffmpeg", "CLI"],
-    repoLink: "https://github.com/jerkeyray/dory.git",
+      "A free and open-source Chrome extension to organize your ChatGPT chats into custom folders, similar to the 'Projects' feature available only in the paid version of ChatGPT.",
+    tags: ["Chrome Extension", "JavaScript", "ChatGPT"],
+    repoLink: "https://github.com/aloktripathi1/chatgpt-organizer",
   },
   {
-    title: "Tokbuk",
+    title: "LaTeX2Obsidian",
     description:
-      "token bucket rate limiter built in go. explores burst control, refill behavior and simple concurrency.",
-    tags: ["Go"],
-    repoLink: "https://github.com/jerkeyray/tokbuk.git",
+      "A precision tool that converts messy ChatGPT-style LaTeX into clean, Obsidian-compatible MathJax syntax.",
+    tags: ["Python", "LaTeX", "Obsidian", "Productivity"],
+    repoLink: "https://github.com/aloktripathi1/latex2obsidian",
   },
   {
-    title: "Goober",
+    title: "Vehicle Parking App",
     description:
-      "go file watcher that automatically reloads applications on save. a simple nodemon style utility for go development.",
-    tags: ["Go", "CLI"],
-    repoLink: "https://github.com/jerkeyray/goober.git",
-  },
-  {
-    title: "Hookinator",
-    description:
-      "webhook manager with a go backend and a typescript interface. built to try out http handling, request routing and webhook utilities.",
-    tags: ["Go", "Webhooks", "Next.js"],
-    sourceLink: "https://hookinator.jerkeyray.com/",
-    repoLink: "https://github.com/jerkeyray/hookinator.git",
-  },
-  {
-    title: "GoStore",
-    description:
-      "redis style key value store written in go. built from scratch to learn request handling, in-memory storage and simple concurrency behavior.",
-    tags: ["Go"],
-    repoLink: "https://github.com/jerkeyray/gostore.git",
+      "A multi-user 4-wheeler parking management system built with Flask and SQLite.",
+    tags: ["Flask", "SQLite", "Web App"],
+    repoLink: "https://github.com/aloktripathi1/vehicle-parking-app",
   },
 ];
