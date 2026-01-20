@@ -3,6 +3,7 @@
 :root {
   /* Typewriter / Obsidian Dark Theme from Image */
   --background: #1c1c1c; /* Deep matte charcoal */
+  /* Alternative: #000000 - Pure black */
   --foreground: #d4d4d4; /* Light gray text */
   --heading: #ebd1b7; /* Warm beige/off-white for headers */
   --accent: #f0a0c0; /* Soft pink for links */
