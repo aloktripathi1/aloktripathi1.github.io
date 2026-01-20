@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { FaGithub, FaXTwitter, FaEnvelope, FaLinkedin, FaCheck, FaFileArrowDown } from "react-icons/fa6";
-import { SiLeetcode, SiKaggle } from "react-icons/si";
+import { SiLeetcode, SiKaggle, SiHashnode } from "react-icons/si";
 
 const socials = [
   {
@@ -35,6 +35,12 @@ const socials = [
     url: "https://www.kaggle.com/aloktripathi1",
     icon: SiKaggle,
     hoverColor: "#20BEFF",
+  },
+  {
+    name: "Hashnode",
+    url: "https://hashnode.com/@aloktripathi",
+    icon: SiHashnode,
+    hoverColor: "#2962FF",
   },
 ];
 
