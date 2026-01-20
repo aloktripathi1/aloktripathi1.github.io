@@ -60,7 +60,7 @@ export default function Now() {
               personal
             </h2>
             <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
-              reducing distractions and maintaining a focused, consistent work routine.
+               cutting down on distractions, maintaining a personal knowledge base, and playing games.
             </p>
           </div>
         </div>

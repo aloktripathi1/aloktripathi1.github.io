@@ -79,7 +79,7 @@ export default function Home() {
 
         <div className="space-y-5 text-base md:text-lg text-muted-foreground/90 leading-relaxed">
           <p>
-            pursuing a bachelor&apos;s in data science and applications at{" "}
+            pursuing bachelor&apos;s in data science and applications at{" "}
             <span className="text-accent font-medium">iit madras</span>.
           </p>
 
@@ -102,8 +102,7 @@ export default function Home() {
             </p>
             <div className="text-sm md:text-base text-muted-foreground/80 space-y-1">
               <p>python · pytorch · scikit-learn · langchain</p>
-              <p>flask · fastapi · sql · docker</p>
-              <p>git · linux</p>
+              <p>flask · fastapi · sql · docker · git · linux</p>
             </div>
           </div>
 
