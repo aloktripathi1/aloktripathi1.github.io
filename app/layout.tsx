@@ -15,38 +15,42 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jerkeyray.com"; // Update this with your actual domain
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.com"; // Update this with your actual domain
 const GA_MEASUREMENT_ID = "G-0TGDV4RME6";
 
 export const metadata: Metadata = {
   title: {
-    default: "jerkeyray",
-    template: "%s | jerkeyray",
+    default: "Alok Tripathi",
+    template: "%s | Alok Tripathi",
   },
-  description: "developer portfolio",
+  description: "crafting intelligence from chaos - data science and ml portfolio",
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/profile-pic.jpeg",
+    apple: "/profile-pic.jpeg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "jerkeyray",
-    title: "jerkeyray",
-    description: "developer portfolio",
+    siteName: "Alok Tripathi",
+    title: "Alok Tripathi",
+    description: "crafting intelligence from chaos - data science and ml portfolio",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "jerkeyray",
+        alt: "Alok Tripathi",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "jerkeyray",
-    description: "developer portfolio",
+    title: "Alok Tripathi",
+    description: "crafting intelligence from chaos - data science and ml portfolio",
     images: ["/opengraph-image"],
-    creator: "@jerkeyray", // Update with your Twitter handle
+    creator: "@im_aloktripathi",
   },
   robots: {
     index: true,

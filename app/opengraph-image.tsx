@@ -23,10 +23,10 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ fontSize: 56, fontWeight: 700, lineHeight: 1.1 }}>
-          jerkeyray
+          Alok Tripathi
         </div>
         <div style={{ marginTop: 22, fontSize: 28, opacity: 0.85 }}>
-          developer portfolio
+          crafting intelligence from chaos
         </div>
       </div>
     ),
