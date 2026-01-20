@@ -59,7 +59,7 @@ export default function Blog() {
       <div className="flex items-center justify-between">
         <h1 className="text-xl md:text-3xl font-bold tracking-tight">blog</h1>
         <a
-          href="https://jerkeyray.hashnode.dev"
+          href="https://hashnode.com/@aloktripathi"
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm text-muted-foreground hover:text-accent transition-colors inline-flex items-center gap-1.5"
