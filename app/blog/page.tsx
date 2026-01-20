@@ -21,7 +21,7 @@ function calculateReadTime(content: string): number {
   return readTime || 1; // Minimum 1 minute
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jerkeyray.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app";
 
 export const metadata: Metadata = {
   title: "blog",
@@ -29,23 +29,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${siteUrl}/blog`,
-    title: "blog | jerkeyray",
+    title: "blog | Alok Tripathi",
     description: "Blog posts about backend systems, distributed systems, and developer tools",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "jerkeyray blog",
+        alt: "Alok Tripathi blog",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "blog | jerkeyray",
+    title: "blog | Alok Tripathi",
     description: "Blog posts about backend systems, distributed systems, and developer tools",
     images: ["/og-image.png"],
-    creator: "@jerkeyray",
+    creator: "@im_aloktripathi",
   },
 };
 

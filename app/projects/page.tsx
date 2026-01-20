@@ -3,34 +3,34 @@ import { Github, ExternalLink } from "lucide-react";
 import { projects } from "../../data/projects";
 import type { Metadata } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jerkeyray.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app";
 
 export const metadata: Metadata = {
   title: "projects",
   description:
-    "Projects built with Go, exploring backend systems and distributed systems",
+    "Projects built with Python, exploring ML systems and AI applications",
   openGraph: {
     type: "website",
     url: `${siteUrl}/projects`,
-    title: "projects | jerkeyray",
+    title: "projects | Alok Tripathi",
     description:
-      "Projects built with Go, exploring backend systems and distributed systems",
+      "Projects built with Python, exploring ML systems and AI applications",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "jerkeyray projects",
+        alt: "Alok Tripathi projects",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "projects | jerkeyray",
+    title: "projects | Alok Tripathi",
     description:
-      "Projects built with Go, exploring backend systems and distributed systems",
+      "Projects built with Python, exploring ML systems and AI applications",
     images: ["/og-image.png"],
-    creator: "@jerkeyray",
+    creator: "@im_aloktripathi",
   },
 };
 

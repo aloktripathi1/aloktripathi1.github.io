@@ -36,7 +36,7 @@ export default async function OpenGraphImage({
         }}
       >
         <div style={{ fontSize: 22, opacity: 0.85, marginBottom: 18 }}>
-          jerkeyray.dev
+          aloktripathi.vercel.app
         </div>
         <div style={{ fontSize: 52, fontWeight: 750, lineHeight: 1.12 }}>
           {title}

@@ -11,7 +11,7 @@ export async function generateStaticParams() {
   }));
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jerkeyray.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app";
 
 export async function generateMetadata({
   params,
@@ -40,7 +40,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       publishedTime,
-      authors: ["jerkeyray"],
+      authors: ["Alok Tripathi"],
       images: ogImageCandidates.map((url) => ({
         url,
         width: 1200,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       images: ogImageCandidates,
-      creator: "@jerkeyray", // Update with your Twitter handle
+      creator: "@im_aloktripathi",
     },
   };
 }
