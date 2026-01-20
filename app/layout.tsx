@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.com"; // Update this with your actual domain
-const GA_MEASUREMENT_ID = "G-0TGDV4RME6";
+const GA_MEASUREMENT_ID = "G-F5K4GRR77Y";
 
 export const metadata: Metadata = {
   title: {
