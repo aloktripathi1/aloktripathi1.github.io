@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 
 const navItems = [
   { name: "about", path: "/" },
+  { name: "now", path: "/now" },
   { name: "blog", path: "/blog" },
   { name: "projects", path: "/projects" },
 ];
