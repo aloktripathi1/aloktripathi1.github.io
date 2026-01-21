@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaGithub, FaXTwitter, FaEnvelope, FaLinkedin, FaCheck, FaFileArrowDown } from "react-icons/fa6";
 import { SiLeetcode, SiKaggle, SiHashnode } from "react-icons/si";
@@ -46,7 +46,12 @@ const socials = [
 
 export default function Home() {
   const [emailCopied, setEmailCopied] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const email = "aloktripathe@gmail.com";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const copyEmail = async () => {
     try {
@@ -59,87 +64,94 @@ export default function Home() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto flex flex-col justify-start pt-16 md:pt-20 pb-10 px-4 md:px-8 animate-in fade-in duration-700">
-      <section className="space-y-6 md:space-y-8">
-        <h1 className="text-xl md:text-3xl font-bold tracking-tight">
-          hi, i&apos;m alok tripathi.
-        </h1>
+    <div className="max-w-2xl mx-auto flex flex-col justify-start pt-20 md:pt-28 pb-16 px-6 md:px-8 relative z-10">
+      <section className="space-y-8 md:space-y-10">
+        {/* Hero Section */}
+        <div className={`${mounted ? "animate-fade-in-up" : "opacity-0"}`}>
+          <h1 className="text-2xl md:text-4xl font-bold tracking-tight mb-4">
+            hi, i&apos;m alok tripathi.
+          </h1>
 
-        <div className="flex flex-wrap items-center gap-2 text-[11px] md:text-sm font-medium">
-          <span className="bg-accent/10 px-2 py-0.5 md:px-2.5 md:py-1 rounded border border-accent/20 text-accent/90">
-            python
-          </span>
-          <span className="text-muted-foreground/30">•</span>
-          <span className="bg-accent/10 px-2 py-0.5 md:px-2.5 md:py-1 rounded border border-accent/20 text-accent/90">
-            ai ml
-          </span>
-          <span className="text-muted-foreground/30">•</span>
-          <span className="bg-accent/10 px-2 py-0.5 md:px-2.5 md:py-1 rounded border border-accent/20 text-accent/90">
-            data science
-          </span>
-          <span className="text-muted-foreground/30">•</span>
-          <span className="bg-accent/10 px-2 py-0.5 md:px-2.5 md:py-1 rounded border border-accent/20 text-accent/90">
-            backend systems
-          </span>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs md:text-sm text-muted-foreground">
+            {["python", "ai ml", "data science", "backend systems"].map((skill, index) => (
+              <span
+                key={skill}
+                className={`px-2.5 py-1 border border-muted/30 rounded-sm glass backdrop-blur-sm 
+                  hover:border-accent/50 hover:text-accent hover:scale-105 hover:shadow-lg
+                  transition-all duration-300 cursor-default
+                  ${mounted ? "animate-fade-in-up" : "opacity-0"}`}
+                style={{ animationDelay: `${300 + index * 100}ms` }}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <div className="space-y-5 text-base md:text-lg text-muted-foreground/90 leading-relaxed">
-          <p>
+        {/* Content Section */}
+        <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+          <p className={`${mounted ? "animate-fade-in-up delay-500" : "opacity-0"}`}>
             pursuing bachelor&apos;s in data science and applications at{" "}
-            <span className="text-accent font-medium">iit madras</span>.
+            <span className="text-accent font-medium hover:text-accent/80 transition-colors">iit madras</span>.
           </p>
 
-          <p>
+          <p className={`${mounted ? "animate-fade-in-up" : "opacity-0"}`} style={{ animationDelay: "600ms" }}>
             learning by thinking from first principles and digging into the details until
             things make sense. mostly working with{" "}
-            <span className="text-accent font-medium">python</span> and{" "}
-            <span className="text-accent font-medium">backend frameworks</span>,
+            <span className="text-accent font-medium hover:text-accent/80 transition-colors">python</span> and{" "}
+            <span className="text-accent font-medium hover:text-accent/80 transition-colors">backend frameworks</span>,
             building intelligent systems that bridge ai capabilities with practical applications—
             focusing on data processing, model deployment, and system design.
           </p>
 
-          <p className="text-sm md:text-base text-muted-foreground/70 italic">
+          <p className={`text-sm md:text-base text-muted-foreground/80 italic ${mounted ? "animate-fade-in-up" : "opacity-0"}`}
+            style={{ animationDelay: "700ms" }}>
             btw, i use fedora.
           </p>
 
-          <div className="pt-4 space-y-3">
-            <p className="text-muted-foreground/80">
-              <span className="font-semibold text-foreground">tools</span>
-            </p>
-            <div className="text-sm md:text-base text-muted-foreground/80 space-y-1">
-              <p>python · pytorch · scikit-learn · langchain</p>
-              <p>flask · fastapi · sql · docker · git · linux</p>
+          {/* Tools Section */}
+          <div className={`pt-2 space-y-2 ${mounted ? "animate-fade-in-up" : "opacity-0"}`}
+            style={{ animationDelay: "800ms" }}>
+            <p className="text-sm font-medium text-foreground">tools</p>
+            <div className="text-sm text-muted-foreground/90 space-y-0.5 font-mono glass rounded-lg p-3 border border-muted/20 hover:border-accent/30 transition-all duration-300">
+              <p className="hover:text-accent/90 transition-colors">python · pytorch · scikit-learn · langchain</p>
+              <p className="hover:text-accent/90 transition-colors">flask · fastapi · sql · docker · git · linux</p>
             </div>
           </div>
 
-          <p className="pt-2">
+          <p className={`${mounted ? "animate-fade-in-up" : "opacity-0"}`} style={{ animationDelay: "900ms" }}>
             i also write{" "}
             <Link
               href="/blog"
-              className="text-accent hover:text-accent/80 underline decoration-accent/50 hover:decoration-accent underline-offset-4 transition-all font-medium"
+              className="text-accent hover:text-accent/90 underline decoration-accent/40 underline-offset-4 font-medium 
+                hover:decoration-accent/80 transition-all"
             >
               technical blogs
             </Link>{" "}
             about what i build and learn along the way.
           </p>
 
-          <p>
+          <p className={`${mounted ? "animate-fade-in-up" : "opacity-0"}`} style={{ animationDelay: "1000ms" }}>
             you can find my resume{" "}
             <a
               href="/alok_tripathi_resume.pdf"
               download="alok_tripathi_resume.pdf"
-              className="inline-flex items-center gap-1.5 text-accent hover:text-accent/80 underline decoration-accent/50 hover:decoration-accent underline-offset-4 transition-all font-medium group"
+              className="inline-flex items-center gap-1.5 text-accent hover:text-accent/90 underline 
+                decoration-accent/40 underline-offset-4 font-medium hover:decoration-accent/80 
+                hover:gap-2 transition-all duration-300"
             >
               here
-              <FaFileArrowDown className="text-sm group-hover:translate-y-0.5 transition-transform" />
+              <FaFileArrowDown className="text-xs" />
             </a>
             .
           </p>
         </div>
       </section>
 
-      <div className="flex gap-5 pt-8 md:pt-10">
-        {socials.map((social) => {
+      {/* Social Icons Section */}
+      <div className={`flex gap-4 pt-12 border-t border-muted/20 ${mounted ? "animate-fade-in-up" : "opacity-0"}`}
+        style={{ animationDelay: "1100ms" }}>
+        {socials.map((social, index) => {
           const Icon = social.icon;
           return (
             <a
@@ -147,53 +159,42 @@ export default function Home() {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-all duration-300 hover:scale-110 focus:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-              style={{
-                color: "currentColor",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#f0a0c0";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "";
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.color = "#f0a0c0";
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.color = "";
-              }}
+              className="text-muted-foreground hover:text-accent transition-all duration-300 
+                hover:scale-125 hover:-translate-y-1 glow-accent-hover
+                relative group"
               aria-label={social.name}
+              style={{
+                animationDelay: `${1200 + index * 50}ms`
+              }}
             >
-              <Icon size={25} />
+              <Icon size={20} className="transition-transform duration-300 group-hover:rotate-12" />
+              {/* Tooltip */}
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-accent/90 text-background 
+                text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none
+                whitespace-nowrap">
+                {social.name}
+              </span>
             </a>
           );
         })}
         <button
           onClick={copyEmail}
-          className="text-muted-foreground transition-all duration-300 hover:scale-110 focus:scale-110 cursor-pointer flex items-center bg-transparent border-none p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-          style={{
-            color: emailCopied ? "#f0a0c0" : "currentColor",
-          }}
-          onMouseEnter={(e) => {
-            if (!emailCopied) {
-              e.currentTarget.style.color = "#f0a0c0";
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (!emailCopied) {
-              e.currentTarget.style.color = "currentColor";
-            }
-          }}
+          className="text-muted-foreground hover:text-accent transition-all duration-300 cursor-pointer 
+            flex items-center bg-transparent border-none p-0 hover:scale-125 hover:-translate-y-1 
+            glow-accent-hover relative group"
           aria-label={emailCopied ? "Email copied" : "Copy email"}
         >
           {emailCopied ? (
-            <span className="flex items-center gap-1.5 text-accent">
-              <FaCheck size={19} />
-            </span>
+            <FaCheck size={18} className="text-accent" />
           ) : (
-            <FaEnvelope size={25} />
+            <FaEnvelope size={20} className="transition-transform duration-300 group-hover:rotate-12" />
           )}
+          {/* Tooltip */}
+          <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-accent/90 text-background 
+            text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none
+            whitespace-nowrap">
+            {emailCopied ? "Copied!" : "Copy Email"}
+          </span>
         </button>
       </div>
     </div>

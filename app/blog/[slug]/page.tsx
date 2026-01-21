@@ -1,62 +1,8 @@
+import Link from "next/link";
 import { allPosts } from "contentlayer/generated";
-import { notFound } from "next/navigation";
 import { format } from "date-fns";
-import { Book } from "lucide-react";
-import { MDXContent } from "./MDXContent";
+import { ExternalLink, Book } from "lucide-react";
 import type { Metadata } from "next";
-
-export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app";
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const post = allPosts.find((post) => post.slug === slug);
-  if (!post) return {};
-
-  const postUrl = `${siteUrl}${post.url}`;
-  const publishedTime = new Date(post.date).toISOString();
-
-  const ogImageCandidates = [
-    post.ogImage,
-    `/blog/${post.slug}/opengraph-image`,
-    "/opengraph-image",
-  ].filter(Boolean) as string[];
-
-  return {
-    title: post.title,
-    description: post.excerpt,
-    openGraph: {
-      type: "article",
-      url: postUrl,
-      title: post.title,
-      description: post.excerpt,
-      publishedTime,
-      authors: ["Alok Tripathi"],
-      images: ogImageCandidates.map((url) => ({
-        url,
-        width: 1200,
-        height: 630,
-        alt: post.title,
-      })),
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: ogImageCandidates,
-      creator: "@im_aloktripathi",
-    },
-  };
-}
 
 function calculateReadTime(content: string): number {
   // Remove markdown syntax, code blocks, and HTML tags
@@ -75,39 +21,83 @@ function calculateReadTime(content: string): number {
   return readTime || 1; // Minimum 1 minute
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const post = allPosts.find((post) => post.slug === slug);
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app";
 
-  if (!post || !post.published) {
-    notFound();
-  }
+export const metadata: Metadata = {
+  title: "blog",
+  description: "Blog posts about backend systems, distributed systems, and developer tools",
+  openGraph: {
+    type: "website",
+    url: `${siteUrl}/blog`,
+    title: "blog | Alok Tripathi",
+    description: "Blog posts about backend systems, distributed systems, and developer tools",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Alok Tripathi blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "blog | Alok Tripathi",
+    description: "Blog posts about backend systems, distributed systems, and developer tools",
+    images: ["/og-image.png"],
+    creator: "@im_aloktripathi",
+  },
+};
 
-  const readTime = calculateReadTime(post.body.raw);
+export default function Blog() {
+  const posts = allPosts
+    .filter((post) => post.published)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <article className="space-y-8 max-w-3xl mx-auto pt-20">
-      <header className="space-y-2">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-          {post.title}
-        </h1>
-        <div className="flex items-center gap-4 text-sm text-muted">
-          <time dateTime={post.date}>
-            {format(new Date(post.date), "MMMM dd, yyyy")}
-          </time>
-          <span className="text-muted-foreground/60">•</span>
-          <span className="flex items-center gap-1.5">
-            <Book size={14} />
-            {readTime} min read
-          </span>
-        </div>
-      </header>
+    <div className="space-y-10 max-w-3xl mx-auto pt-20 px-6 md:px-8">
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl md:text-4xl font-bold tracking-tight">blog</h1>
+        <a
+          href="https://hashnode.com/@aloktripathi"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-muted-foreground hover:text-accent transition-colors inline-flex items-center gap-1.5"
+        >
+          view in hashnode
+          <ExternalLink size={13} />
+        </a>
+      </div>
 
-      <MDXContent code={post.body.code} />
-    </article>
+      <div className="space-y-3">
+        {posts.map((post) => {
+          const readTime = calculateReadTime(post.body.raw);
+          return (
+            <Link
+              key={post.slug}
+              href={post.url}
+              className="group block border border-muted/20 rounded-lg p-6 hover:border-accent/40 transition-all duration-300"
+            >
+              <article className="flex flex-col space-y-2">
+                <h2 className="text-base md:text-lg font-semibold group-hover:text-accent transition-colors">
+                  {post.title}
+                </h2>
+                <div className="flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
+                  <time dateTime={post.date}>
+                    {format(new Date(post.date), "MMMM dd, yyyy")}
+                  </time>
+                  <span className="text-muted-foreground/50">•</span>
+                  <span className="flex items-center gap-1.5">
+                    <Book size={12} />
+                    {readTime} min read
+                  </span>
+                </div>
+              </article>
+            </Link>
+          );
+        })}
+      </div>
+    </div>
   );
 }
+
