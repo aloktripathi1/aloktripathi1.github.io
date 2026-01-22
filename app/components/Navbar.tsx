@@ -17,10 +17,9 @@ export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
   const lastScrollYRef = useRef(0);
-  const isBlogPage = pathname.startsWith("/blog");
-  const isProjectsPage = pathname.startsWith("/projects");
-  const shouldUseScrollBehavior = isBlogPage || (isProjectsPage && isMobile);
-  const shouldBeTranslucent = isBlogPage || isProjectsPage;
+  // Remove special effects for blog and projects
+  const shouldUseScrollBehavior = false;
+  const shouldBeTranslucent = false;
 
   useEffect(() => {
     // Mount animation
@@ -39,50 +38,14 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  useEffect(() => {
-    if (!shouldUseScrollBehavior) {
-      return;
-    }
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const lastScrollY = lastScrollYRef.current;
-
-      // Show navbar when scrolling up, hide when scrolling down
-      if (currentScrollY < lastScrollY) {
-        // Scrolling up
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down and past 100px
-        setIsVisible(false);
-      }
-
-      // Always show at the top
-      if (currentScrollY < 50) {
-        setIsVisible(true);
-      }
-
-      lastScrollYRef.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [shouldUseScrollBehavior]);
+  // Remove scroll behavior effect
 
   return (
     <nav
-      className={`flex flex-col items-center transition-all duration-500 fixed top-0 left-0 right-0 z-50 ${shouldUseScrollBehavior && !isVisible
-          ? "opacity-0 -translate-y-full pointer-events-none"
-          : mounted
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-4"
-        }`}
+      className={`flex flex-col items-center transition-all duration-500 fixed top-0 left-0 right-0 z-50 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}
     >
       <div
-        className={`w-full py-5 flex flex-col items-center transition-all duration-300 ${shouldBeTranslucent
-            ? "glass-strong border-b border-muted/20"
-            : "bg-background border-b border-muted/10"
-          }`}
+        className="w-full py-5 flex flex-col items-center transition-all duration-300 bg-background border-b border-muted/10"
       >
         <ul className="flex gap-8 text-sm">
           {navItems.map((item, index) => {

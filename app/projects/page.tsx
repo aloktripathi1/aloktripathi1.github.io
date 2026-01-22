@@ -43,7 +43,7 @@ export default function Projects() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="group relative border border-muted/20 rounded-lg p-6 hover:border-accent/40 transition-all duration-300 flex flex-col"
+            className="group relative border border-muted/20 rounded-lg p-6 hover:border-accent hover:bg-muted/5 hover:shadow-[0_0_20px_-5px_rgba(240,160,192,0.15)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
           >
             {/* Title */}
             <h2 className="font-semibold text-base mb-2.5 group-hover:text-accent transition-colors">

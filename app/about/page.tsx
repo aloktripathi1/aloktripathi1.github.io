@@ -3,7 +3,7 @@ import { FaFileArrowDown } from "react-icons/fa6";
 
 export default function About() {
   return (
-    <div className="max-w-3xl mx-auto flex flex-col justify-start md:justify-center min-h-screen pt-16 md:pt-0 pb-10 px-4 md:px-8 animate-in fade-in duration-700">
+    <div className="max-w-3xl mx-auto flex flex-col justify-start md:justify-center min-h-screen pt-16 md:pt-0 pb-10 px-4 md:px-8">
       <section className="space-y-6 md:space-y-8">
         <h1 className="text-xl md:text-3xl font-bold tracking-tight">
           hi, i&apos;m alok tripathi.

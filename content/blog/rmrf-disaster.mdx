@@ -1,0 +1,135 @@
+---
+title: "How rm -rf Almost Cost Me My System (and How to Defend Against It)"
+date: "2026-01-22"
+excerpt: "A real-world story of how a single typo with rm -rf nearly wiped my system, and the practical layers of defense you can use to avoid disaster."
+published: true
+---
+
+The command line is a loaded gun. It gives you god-like powers over your machine, but it also assumes you know exactly what you are doing 100% of the time. One slip, one extra space, or one uninitialized variable, and everything is gone.
+
+In this post, we'll cover why `rm` is so dangerous, the anatomy of a disaster, and the layers of defense you can build to save yourself from yourself. This is a language-agnostic guide to not deleting your life's work.
+
+## why deletion is a problem
+In modern graphical interfaces, deletion is a suggestion. You drag a file to the trash, you can hit "Undo", or you get a scary confirmation dialog. The OS treats you like a toddler holding a pair of scissors—it puts a plastic guard on everything.
+
+The terminal treats you like a surgeon. If you say "cut," it cuts.
+
+When you execute `rm` (remove), you aren't just hiding the file. You are unlinking the inode. The filesystem immediately marks that space as "free real estate" for new data. While forensic tools *might* recover it if you pull the power cord immediately, for all intents and purposes, the data is vaporized.
+
+## things that can go wrong (and eventually will go wrong)
+**Fatigue.** It’s 2 AM, you’re debugging a build failure, and your brain is running on fumes. You just want to clean the directory and start over. Muscle memory takes over, but your aim is off.
+
+**Typos.** There is a world of difference between `rm -rf project /` and `rm -rf project/`. That single space turns "delete the project folder" into "delete the project folder AND the root of my filesystem."
+
+**Bad Scripts.** The classic variable expansion nightmare. You write `rm -rf $BUILD_DIR/*`. If `$BUILD_DIR` fails to set or is empty, the shell expands this to `rm -rf /*`. Goodbye, operating system.
+
+**Hubris.** You think you’re too smart to make these mistakes. That is exactly when you are most dangerous.
+
+## the incident
+I was working on a deployment script. Simple stuff—clone a repo, build it, move the artifacts, and clean up the temporary directory.
+
+I had a variable definition at the top: `TEMP_DIR="/tmp/build_v1"`.
+Later in the script, I had the cleanup command: `rm -rf $TMP_DIR/`.
+
+Did you spot it?
+
+I defined `TEMP_DIR` but called `$TMP_DIR`.
+In Bash, an undefined variable expands to an empty string.
+So the command the shell actually executed was: `rm -rf /`
+
+Suddenly, my terminal output got weird. Commands like `ls` and `git` started returning "command not found." The realization hit me like a truck. I wasn't cleaning a temp folder; I was scrubbing my hard drive from the root down.
+
+## defining the rules
+the safety problem
+We need a system that balances efficiency with survival. If we wrap every command in bubble wrap, we lose the speed of the CLI. If we have no guards, we eventually nuke our systems.
+
+Our defense strategy must satisfy three properties:
+
+**friction** - Dangerous actions should require slightly more effort than safe ones.
+
+**recoverability** - If a deletion happens, there should be a grace period (a "Trash" folder).
+
+**validation** - The system should reject obviously self-destructive commands.
+
+This is where "Defense in Depth" comes in.
+
+## defense layer 1: muscle memory
+The first layer of defense is your own habits.
+
+**Stop using -f.**
+The `-f` flag stands for "force." It tells the system "don't ask me for confirmation, just do it." Unless you are writing a script, you rarely need this. Using `rm -r` will prompt you for write-protected files, which often acts as a necessary "Are you sure?" brake.
+
+**Stop using wildcards blindly.**
+Instead of `rm -rf *`, type out the directory name. Or, use `ls` first.
+`ls *.log` (Check what matches)
+`rm *.log` (Execute).
+
+## defense layer 2: the alias trick
+You can save yourself from typos by aliasing `rm` to something safer.
+
+Add this to your `.bashrc` or `.zshrc`:
+
+```sh
+alias rm='rm -I'
+```
+
+Note the capital `I`. This tells `rm` to prompt you **once** before removing more than three files or when removing recursively. It’s less annoying than `-i` (which asks for *every single file*) but still catches the catastrophic "delete everything" commands.
+
+## defense layer 3: use the trash
+Why does the command line not have a recycle bin? Well, it can.
+
+Tools like `trash-cli` provide a command line interface to the system's trash can.
+
+Instead of `rm`, you use `trash`.
+`trash my_folder` moves it to the bin.
+`trash-restore` brings it back.
+
+You can even alias `rm` to `trash` if you want to be totally safe, though that might break some scripts that expect immediate deletion.
+
+## engineering safety and some technical stuff
+the --preserve-root flag
+The developers of `rm` eventually realized that people delete their systems by accident way too often.
+
+Modern versions of GNU `rm` include `--preserve-root` by default. This prevents the specific command `rm -rf /` from running.
+
+However, it does **not** prevent `rm -rf /*`.
+The shell expands the wildcard `*` into a list of every folder in the root (`/bin`, `/boot`, `/home`, etc.) and passes *those* to `rm`. Since you aren't explicitly targeting root, `rm` happily deletes everything inside it.
+
+Don't rely on this flag to save you.
+
+## shellcheck
+If you write shell scripts, you need a linter.
+
+ShellCheck is a static analysis tool for shell scripts. If I had run my disastrous script through ShellCheck, it would have screamed at me:
+
+`SC2154: TMP_DIR is referenced but not assigned.`
+
+It catches uninitialized variables, dangerous quoting, and common logic errors. It is the spellcheck for your sanity.
+
+## backups (the nuclear option)
+No amount of aliases or tools will save you from every mistake. The only true safety is a backup.
+
+Follow the 3-2-1 rule:
+3 copies of data.
+2 different media types.
+1 offsite.
+
+If you deleted your system today, how much work would you lose? If the answer is "more than a day," your backup strategy is failing.
+
+## byee
+I eventually reinstalled my OS. I lost a few hours of configuration, but thanks to `git` pushing everything to the cloud, I didn't lose code. This post is my attempt to turn my panic attack into a lesson for you.
+
+The point of this post isn't to make you scared of the terminal. It's to make you respect it. The CLI is a power tool without safety guards—you have to bolt them on yourself.
+
+Anyway, that’s it for me. Hope you don't delete your root directory.
+
+Thanks for reading. See ya :)
+
+If you found this write-up useful, feel free to fund my caffeine addiction:
+
+[buy me a coffee]
+
+## go check these out
+[trash-cli repo]
+[ShellCheck]
+[The Art of Command Line]
