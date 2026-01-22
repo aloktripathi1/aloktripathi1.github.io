@@ -18,8 +18,7 @@ export default function Now() {
               current focus
             </h2>
             <p className="text-base md:text-lg text-muted-foreground/90 leading-relaxed">
-              learning and building retrieval-augmented generation systems and
-              designing production-ready ml applications.
+              learning machine learning and deep learning through hands-on coursework and implementation.
             </p>
           </div>
 
@@ -31,15 +30,23 @@ export default function Now() {
             <ul className="space-y-2 text-base md:text-lg text-muted-foreground/90">
               <li className="flex items-start">
                 <span className="mr-3 text-accent">•</span>
-                <span>production ml apis with fastapi</span>
+                <span>end-to-end machine learning with scikit-learn</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-3 text-accent">•</span>
-                <span>containerization and mlops pipelines</span>
+                <span>regression, classification, SVMs, trees, and ensemble methods</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-3 text-accent">•</span>
-                <span>system design for ml at scale</span>
+                <span>model evaluation, regularization, and feature selection</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 text-accent">•</span>
+                <span>deep learning models: CNNs, RNNs, LSTMs, and transformers</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 text-accent">•</span>
+                <span>generative models: autoencoders, GANs, diffusion models, and LLM fine-tuning</span>
               </li>
             </ul>
           </div>
@@ -50,7 +57,7 @@ export default function Now() {
               reading
             </h2>
             <p className="text-base md:text-lg text-muted-foreground/90 italic">
-              designing machine learning systems — chip huyen
+              Hands-On Machine Learning with Scikit-Learn & PyTorch — Aurélien Géron
             </p>
           </div>
 
