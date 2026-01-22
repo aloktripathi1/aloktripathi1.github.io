@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   description: "crafting intelligence from chaos - data science and ml portfolio",
   metadataBase: new URL(siteUrl),
   icons: {
-    icon: "/profile-pic.jpeg",
-    apple: "/profile-pic.jpeg",
+    icon: "/profile-pic.png",
+    apple: "/profile-pic.png",
   },
   openGraph: {
     type: "website",
