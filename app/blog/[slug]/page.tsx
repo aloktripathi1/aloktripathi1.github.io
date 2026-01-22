@@ -1,103 +1,27 @@
-import Link from "next/link";
+import { notFound } from "next/navigation";
 import { allPosts } from "contentlayer/generated";
 import { format } from "date-fns";
-import { ExternalLink, Book } from "lucide-react";
-import type { Metadata } from "next";
+import { MDXContent } from "./MDXContent";
 
-function calculateReadTime(content: string): number {
-  // Remove markdown syntax, code blocks, and HTML tags
-  const text = content
-    .replace(/```[\s\S]*?```/g, "") // Remove code blocks
-    .replace(/`[^`]+`/g, "") // Remove inline code
-    .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1") // Replace links with just text
-    .replace(/[#*_~`]/g, "") // Remove markdown formatting
-    .replace(/<[^>]+>/g, "") // Remove HTML tags
-    .trim();
-
-  const words = text.split(/\s+/).filter((word) => word.length > 0);
-  const wordsPerMinute = 200;
-  const readTime = Math.ceil(words.length / wordsPerMinute);
-
-  return readTime || 1; // Minimum 1 minute
+interface BlogPostPageProps {
+  params: { slug: string };
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app";
 
-export const metadata: Metadata = {
-  title: "blog",
-  description: "Blog posts about backend systems, distributed systems, and developer tools",
-  openGraph: {
-    type: "website",
-    url: `${siteUrl}/blog`,
-    title: "blog | Alok Tripathi",
-    description: "Blog posts about backend systems, distributed systems, and developer tools",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Alok Tripathi blog",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "blog | Alok Tripathi",
-    description: "Blog posts about backend systems, distributed systems, and developer tools",
-    images: ["/og-image.png"],
-    creator: "@im_aloktripathi",
-  },
-};
-
-export default function Blog() {
-  const posts = allPosts
-    .filter((post) => post.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params;
+  const post = allPosts.find((p) => p.slug === slug);
+  if (!post) return notFound();
 
   return (
-    <div className="space-y-10 max-w-3xl mx-auto pt-20 px-6 md:px-8">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl md:text-4xl font-bold tracking-tight">blog</h1>
-        <a
-          href="https://hashnode.com/@aloktripathi"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-muted-foreground hover:text-accent transition-colors inline-flex items-center gap-1.5"
-        >
-          view in hashnode
-          <ExternalLink size={13} />
-        </a>
+    <article className="space-y-8 max-w-3xl mx-auto pt-20">
+      <h1 className="text-2xl md:text-4xl font-bold tracking-tight mb-2">{post.title}</h1>
+      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-8">
+        <time dateTime={post.date}>{format(new Date(post.date), "MMMM dd, yyyy")}</time>
+        <span className="text-muted-foreground/60">•</span>
       </div>
-
-      <div className="space-y-3">
-        {posts.map((post) => {
-          const readTime = calculateReadTime(post.body.raw);
-          return (
-            <Link
-              key={post.slug}
-              href={post.url}
-              className="group block border border-muted/20 rounded-lg p-6 hover:border-accent/40 transition-all duration-300"
-            >
-              <article className="flex flex-col space-y-2">
-                <h2 className="text-base md:text-lg font-semibold group-hover:text-accent transition-colors">
-                  {post.title}
-                </h2>
-                <div className="flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
-                  <time dateTime={post.date}>
-                    {format(new Date(post.date), "MMMM dd, yyyy")}
-                  </time>
-                  <span className="text-muted-foreground/50">•</span>
-                  <span className="flex items-center gap-1.5">
-                    <Book size={12} />
-                    {readTime} min read
-                  </span>
-                </div>
-              </article>
-            </Link>
-          );
-        })}
-      </div>
-    </div>
+      <MDXContent code={post.body.code} />
+    </article>
   );
 }
 
