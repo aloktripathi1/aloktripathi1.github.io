@@ -35,13 +35,7 @@ const socials = [
     url: "https://www.kaggle.com/aloktripathi1",
     icon: SiKaggle,
     hoverColor: "#20BEFF",
-  },
-  {
-    name: "Hashnode",
-    url: "https://hashnode.com/@aloktripathi",
-    icon: SiHashnode,
-    hoverColor: "#2962FF",
-  },
+  }
 ];
 
 export default function Home() {

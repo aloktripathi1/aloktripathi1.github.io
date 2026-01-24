@@ -26,7 +26,7 @@ export const projects: Project[] = [
     repoLink: "https://github.com/aloktripathi1/Learnsy",
   },
   {
-    title: "Hospital Management System",
+    title: "MediHub",
     description:
       "A hospital management web app for managing appointments, patient records, and doctor schedules. Built with Flask, Vue.js, SQLite, and Celery.",
       tags: ["Python", "Flask", "Vue.js", "Bootstrap", "SQLite", "JavaScript", "Celery", "Redis"],
@@ -54,9 +54,9 @@ export const projects: Project[] = [
     repoLink: "https://github.com/aloktripathi1/latex2obsidian",
   },
   {
-    title: "Vehicle Parking App",
+    title: "ParkEase",
     description:
-      "A multi-user 4-wheeler parking management system built with Flask and SQLite.",
+      "A multi-user 4-wheeler parking management system built with Python, Flask, Jinja, Bootstrap and SQLite.",
       tags: ["Flask", "Python", "SQLite", "Bootstrap"],
     repoLink: "https://github.com/aloktripathi1/vehicle-parking-app",
   },
