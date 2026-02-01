@@ -71,7 +71,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ viewTransitionName: 'none' } as React.CSSProperties}>
+      <head>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            @media (prefers-reduced-motion: no-preference) {
+              html {
+                view-transition-name: none !important;
+              }
+            }
+            * {
+              view-transition-name: none !important;
+            }
+          `
+        }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased px-6 py-10 min-h-screen flex flex-col`}
       >

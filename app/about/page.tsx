@@ -3,11 +3,19 @@ import { FaFileArrowDown } from "react-icons/fa6";
 
 export default function About() {
   return (
-    <div className="max-w-3xl mx-auto flex flex-col justify-start md:justify-center min-h-screen pt-16 md:pt-0 pb-10 px-4 md:px-8">
-      <section className="space-y-6 md:space-y-8">
+    <>
+      <style jsx global>{`
+        .about-page * {
+          animation: none !important;
+          transition: none !important;
+        }
+      `}</style>
+      <div className="about-page space-y-8 max-w-3xl mx-auto pt-20">
         <h1 className="text-xl md:text-3xl font-bold tracking-tight">
           hi, i&apos;m alok tripathi.
         </h1>
+        
+        <section className="space-y-6 md:space-y-8">
 
         <div className="flex flex-wrap items-center gap-2 text-[11px] md:text-sm font-medium">
           <span className="bg-accent/10 px-2 py-0.5 md:px-2.5 md:py-1 rounded border border-accent/20 text-accent/90">
@@ -82,5 +90,6 @@ export default function About() {
         </div>
       </section>
     </div>
+    </>
   );
 }
