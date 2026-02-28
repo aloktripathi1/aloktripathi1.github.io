@@ -55,43 +55,48 @@ export default function Blog() {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className="space-y-8 max-w-3xl mx-auto pt-20">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl md:text-3xl font-bold tracking-tight">blog</h1>
+    <div className="max-w-3xl mx-auto pt-24 md:pt-32 pb-20 px-6 md:px-8">
+      <div className="flex items-center justify-between mb-10">
+        <div>
+          <h1 className="text-xl md:text-3xl font-bold tracking-tight text-gradient-subtle">blog</h1>
+          <p className="text-sm text-muted-foreground/60 mt-1">thoughts on building and learning</p>
+        </div>
         <a
           href="https://hashnode.com/@aloktripathi"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-muted-foreground hover:text-accent transition-colors inline-flex items-center gap-1.5"
+          className="text-xs font-mono text-muted-foreground/60 hover:text-accent transition-colors 
+            inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/8 hover:border-accent/20"
         >
-          view in hashnode
-          <ExternalLink size={14} />
+          hashnode
+          <ExternalLink size={12} />
         </a>
       </div>
       
       <div className="space-y-4">
-        {posts.map((post) => {
+        {posts.map((post, index) => {
           const readTime = calculateReadTime(post.body.raw);
           return (
             <Link 
               key={post.slug}
               href={post.url}
-              className="group block border border-muted/20 p-6 hover:border-accent hover:bg-muted/5 hover:shadow-[0_0_20px_-5px_rgba(240,160,192,0.15)] transition-all duration-300 hover:-translate-y-1 rounded-md"
+              className="group card block p-6 animate-fade-in-up"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <article className="flex flex-col space-y-2">
-                <h2 className="text-lg md:text-xl font-bold group-hover:text-accent transition-colors">
-                  {post.title}
-                </h2>
-                <div className="flex items-center gap-4 text-sm text-muted">
+              <article className="flex flex-col space-y-3">
+                <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground/60">
                   <time dateTime={post.date}>
-                    {format(new Date(post.date), "MMMM dd, yyyy")}
+                    {format(new Date(post.date), "MMM dd, yyyy")}
                   </time>
-                  <span className="text-muted-foreground/60">•</span>
+                  <span className="w-1 h-1 rounded-full bg-accent/40" />
                   <span className="flex items-center gap-1.5">
-                    <Book size={14} />
-                    {readTime} min read
+                    <Book size={12} />
+                    {readTime} min
                   </span>
                 </div>
+                <h2 className="text-base md:text-lg font-bold group-hover:text-accent transition-colors duration-300">
+                  {post.title}
+                </h2>
               </article>
             </Link>
           );

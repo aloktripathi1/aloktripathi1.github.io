@@ -10,12 +10,11 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "GradeGenie",
+    title: "MediHub",
     description:
-      "A precise grade calculator built by an IITM BS student for fellow students.",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Framer Motion"],
-    sourceLink: "https://gradegenie.vercel.app",
-    repoLink: "https://github.com/aloktripathi1/gradegenie",
+      "A hospital management web app for managing appointments, patient records, and doctor schedules. Built with Flask, Vue.js, SQLite, and Celery.",
+      tags: ["Python", "Flask", "Vue.js", "Bootstrap", "SQLite", "JavaScript", "Celery", "Redis"],
+    repoLink: "https://github.com/aloktripathi1/hospital-management-system",
   },
   {
     title: "Learnsy",
@@ -26,11 +25,28 @@ export const projects: Project[] = [
     repoLink: "https://github.com/aloktripathi1/Learnsy",
   },
   {
-    title: "MediHub",
+    title: "Deadline Intel",
     description:
-      "A hospital management web app for managing appointments, patient records, and doctor schedules. Built with Flask, Vue.js, SQLite, and Celery.",
-      tags: ["Python", "Flask", "Vue.js", "Bootstrap", "SQLite", "JavaScript", "Celery", "Redis"],
-    repoLink: "https://github.com/aloktripathi1/hospital-management-system",
+      "A deadline-tracking application designed for IIT Madras BS students to help them manage and monitor course deadlines effectively.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    sourceLink: "https://deadline-intel.vercel.app",
+    repoLink: "https://github.com/aloktripathi1/deadline-intel",
+  },
+  {
+    title: "GradeGenie",
+    description:
+      "A precise grade calculator built by an IITM BS student for fellow students.",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Framer Motion"],
+    sourceLink: "https://gradegenie.vercel.app",
+    repoLink: "https://github.com/aloktripathi1/gradegenie",
+  },
+  {
+    title: "NoteTmp",
+    description:
+      "A tool for taking quick notes that auto-save in your browser. No sign-up, no distractions—just instant note-taking.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    sourceLink: "https://notetmp.vercel.app",
+    repoLink: "https://github.com/aloktripathi1/NoteTmp",
   },
   {
     title: "LLM Viva Assistant",

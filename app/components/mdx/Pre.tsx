@@ -23,7 +23,7 @@ export function Pre({ children, raw, className = "", ...props }: PreProps) {
   const codeToCopy = raw ?? extractText(children);
 
   const combinedClassName = [
-    "mdx-pre group relative my-6 overflow-hidden rounded-lg border border-accent/30 shadow-[0_24px_48px_-18px_rgba(0,0,0,0.75)]",
+    "mdx-pre group relative my-6 overflow-hidden rounded-xl border border-accent/20 shadow-[0_24px_48px_-18px_rgba(0,0,0,0.75)]",
     className,
   ]
     .filter(Boolean)

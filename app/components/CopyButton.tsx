@@ -17,7 +17,7 @@ export function CopyButton({ text }: { text: string }) {
       type="button"
       onClick={copy}
       aria-live="polite"
-      className="relative inline-flex h-8 w-8 items-center justify-center rounded-md border border-white/20 bg-white/10 text-foreground/80 transition-all hover:bg-accent/15 hover:border-accent/60 hover:text-accent"
+      className="relative inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-foreground/70 transition-all hover:bg-accent/10 hover:border-accent/40 hover:text-accent"
     >
       <Copy
         size={14}
