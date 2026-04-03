@@ -87,9 +87,11 @@ export default function Home() {
             focusing on data processing, model deployment, and system design.
           </p>
 
+          {/*
           <p className="text-sm text-muted-foreground/60 italic font-mono">
             btw, i use fedora.
           </p>
+          */}
         </div>
 
         {/* Tools Section - terminal style */}
