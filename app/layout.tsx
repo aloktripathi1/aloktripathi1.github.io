@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: "crafting intelligence from chaos - data science and ml portfolio",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Alok Tripathi",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Alok Tripathi",
     description: "crafting intelligence from chaos - data science and ml portfolio",
-    images: ["/opengraph-image"],
+    images: ["/opengraph-image.png"],
     creator: "@im_aloktripathi",
   },
   robots: {

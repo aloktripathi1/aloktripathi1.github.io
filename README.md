@@ -7,7 +7,7 @@ Personal portfolio website showcasing my work in data science, machine learning,
 - **Framework**: Next.js 16 with TypeScript
 - **Styling**: Tailwind CSS
 - **Content**: MDX with Contentlayer
-- **Deployment**: Vercel
+- **Deployment**: GitHub Pages (GitHub Actions)
 
 ## Features
 
@@ -31,6 +31,16 @@ npm run build
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view in browser.
+
+## Deploying to GitHub Pages
+
+This repository is configured to deploy automatically to GitHub Pages on every push to `main`.
+
+1. In your GitHub repository, open Settings > Pages.
+2. Set Source to `GitHub Actions`.
+3. Push to `main`.
+
+The workflow at `.github/workflows/deploy-pages.yml` builds a static export (`out/`) and publishes it to Pages.
 
 ## Links
 

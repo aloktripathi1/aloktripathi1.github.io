@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: "Blog posts about backend systems, distributed systems, and developer tools",
     images: [
       {
-        url: "/og-image.png",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Alok Tripathi blog",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "blog | Alok Tripathi",
     description: "Blog posts about backend systems, distributed systems, and developer tools",
-    images: ["/og-image.png"],
+    images: ["/opengraph-image.png"],
     creator: "@im_aloktripathi",
   },
 };
