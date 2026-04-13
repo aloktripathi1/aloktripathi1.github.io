@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaGithub, FaXTwitter, FaEnvelope, FaLinkedin, FaCheck, FaFileArrowDown } from "react-icons/fa6";
 import { SiLeetcode, SiKaggle } from "react-icons/si";
 import { ArrowRight, Sparkles, Terminal } from "lucide-react";
+import { withBasePath } from "@/lib/site";
 
 const socials = [
   { name: "GitHub", url: "https://github.com/aloktripathi1", icon: FaGithub },
@@ -138,7 +139,7 @@ export default function Home() {
             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </Link>
           <a
-            href="/alok_tripathi_resume.pdf"
+            href={withBasePath("/alok_tripathi_resume.pdf")}
             download="alok_tripathi_resume.pdf"
             className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full 
               border border-white/10 text-foreground/80 text-sm font-medium

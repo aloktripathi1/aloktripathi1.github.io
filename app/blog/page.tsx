@@ -3,6 +3,7 @@ import { allPosts } from "contentlayer/generated";
 import { format } from "date-fns";
 import { ExternalLink, Book } from "lucide-react";
 import type { Metadata } from "next";
+import { siteUrl, withBasePath } from "@/lib/site";
 
 function calculateReadTime(content: string): number {
   // Remove markdown syntax, code blocks, and HTML tags
@@ -21,8 +22,6 @@ function calculateReadTime(content: string): number {
   return readTime || 1; // Minimum 1 minute
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app";
-
 export const metadata: Metadata = {
   title: "blog",
   description: "Blog posts about backend systems, distributed systems, and developer tools",
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
     description: "Blog posts about backend systems, distributed systems, and developer tools",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: withBasePath("/opengraph-image.png"),
         width: 1200,
         height: 630,
         alt: "Alok Tripathi blog",
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "blog | Alok Tripathi",
     description: "Blog posts about backend systems, distributed systems, and developer tools",
-    images: ["/opengraph-image.png"],
+    images: [withBasePath("/opengraph-image.png")],
     creator: "@im_aloktripathi",
   },
 };

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FaFileArrowDown } from "react-icons/fa6";
 import { Terminal } from "lucide-react";
+import { withBasePath } from "@/lib/site";
 
 const tools = [
   { category: "ml & ai", items: ["pytorch", "scikit-learn", "langchain"] },
@@ -78,7 +79,7 @@ export default function About() {
           <p className="animate-fade-in-up" style={{ animationDelay: '600ms' }}>
             you can find my resume{" "}
             <a
-              href="/alok_tripathi_resume.pdf"
+              href={withBasePath("/alok_tripathi_resume.pdf")}
               download="alok_tripathi_resume.pdf"
               className="inline-flex items-center gap-1.5 text-accent hover:text-accent/80 underline 
                 decoration-accent/30 hover:decoration-accent underline-offset-4 font-semibold group"

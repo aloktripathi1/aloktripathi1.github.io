@@ -2,8 +2,7 @@ import Link from "next/link";
 import { Github, ExternalLink } from "lucide-react";
 import { projects } from "../../data/projects";
 import type { Metadata } from "next";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app";
+import { siteUrl, withBasePath } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "projects",
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
       "Projects built with Python, exploring ML systems and AI applications",
     images: [
       {
-        url: "/og-image.png",
+        url: withBasePath("/opengraph-image.png"),
         width: 1200,
         height: 630,
         alt: "Alok Tripathi projects",
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
     title: "projects | Alok Tripathi",
     description:
       "Projects built with Python, exploring ML systems and AI applications",
-    images: ["/og-image.png"],
+    images: [withBasePath("/opengraph-image.png")],
     creator: "@im_aloktripathi",
   },
 };

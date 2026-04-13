@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar";
+import { siteUrl, withBasePath } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,7 +16,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aloktripathi.vercel.app"; // Update this with your actual domain
 const GA_MEASUREMENT_ID = "G-F5K4GRR77Y";
 
 export const metadata: Metadata = {
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   description: "crafting intelligence from chaos - data science and ml portfolio",
   metadataBase: new URL(siteUrl),
   icons: {
-    icon: "/profile-pic.png",
-    apple: "/profile-pic.png",
+    icon: withBasePath("/profile-pic.png"),
+    apple: withBasePath("/profile-pic.png"),
   },
   openGraph: {
     type: "website",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: "crafting intelligence from chaos - data science and ml portfolio",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: withBasePath("/opengraph-image.png"),
         width: 1200,
         height: 630,
         alt: "Alok Tripathi",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Alok Tripathi",
     description: "crafting intelligence from chaos - data science and ml portfolio",
-    images: ["/opengraph-image.png"],
+    images: [withBasePath("/opengraph-image.png")],
     creator: "@im_aloktripathi",
   },
   robots: {

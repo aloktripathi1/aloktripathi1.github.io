@@ -3,15 +3,22 @@
 import { useMDXComponent } from "next-contentlayer2/hooks";
 import type { ComponentPropsWithoutRef, ComponentType } from "react";
 import { Pre } from "../../components/mdx/Pre";
+import { withBasePath } from "@/lib/site";
 
 // Custom Image component for MDX that handles both local and external images
 const MDXImage = (props: ComponentPropsWithoutRef<"img">) => {
+  const normalizedSrc =
+    typeof props.src === "string" && props.src.startsWith("/")
+      ? withBasePath(props.src)
+      : props.src;
+
   // For all images, use regular img tag (works for both local and external)
   // Local images should be in public/images/blog/ and referenced as /images/blog/filename.jpg
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       {...props}
+      src={normalizedSrc}
       alt={props.alt || ""}
       className="rounded-lg my-4 w-full"
       loading="lazy"
