@@ -8,9 +8,9 @@ import { ArrowRight, Sparkles, Terminal } from "lucide-react";
 
 const socials = [
   { name: "GitHub", url: "https://github.com/aloktripathi1", icon: FaGithub },
-  { name: "X", url: "https://x.com/im_aloktripathi", icon: FaXTwitter },
+  // { name: "X", url: "https://x.com/im_aloktripathi", icon: FaXTwitter },
   { name: "LinkedIn", url: "https://www.linkedin.com/in/aloktripathi1", icon: FaLinkedin },
-  { name: "LeetCode", url: "https://leetcode.com/u/aloktripathi/", icon: SiLeetcode },
+  // { name: "LeetCode", url: "https://leetcode.com/u/aloktripathi/", icon: SiLeetcode },
   { name: "Kaggle", url: "https://www.kaggle.com/aloktripathi1", icon: SiKaggle },
 ];
 
