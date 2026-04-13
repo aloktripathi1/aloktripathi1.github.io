@@ -1,11 +1,16 @@
-const fallbackSiteUrl = "https://aloktripathi1.github.io/portfolio";
-
 const githubOwner = process.env.GITHUB_REPOSITORY_OWNER;
 const githubRepo = process.env.GITHUB_REPOSITORY?.split("/")[1];
 
+const isUserPagesRepo =
+  !!githubOwner &&
+  !!githubRepo &&
+  githubRepo.toLowerCase() === `${githubOwner.toLowerCase()}.github.io`;
+
 const defaultSiteUrl = githubOwner && githubRepo
-  ? `https://${githubOwner}.github.io/${githubRepo}`
-  : fallbackSiteUrl;
+  ? isUserPagesRepo
+    ? `https://${githubOwner}.github.io`
+    : `https://${githubOwner}.github.io/${githubRepo}`
+  : "https://aloktripathi1.github.io";
 
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || defaultSiteUrl).replace(/\/$/, "");
 

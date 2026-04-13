@@ -36,8 +36,13 @@ Open [http://localhost:3000](http://localhost:3000) to view in browser.
 
 This repository is configured to deploy automatically to GitHub Pages on every push to `main`.
 
-Default production URL fallback is `https://aloktripathi1.github.io/portfolio`.
-You can override it by setting `NEXT_PUBLIC_SITE_URL` in your GitHub Actions environment.
+If the repository name is `aloktripathi1.github.io`, the site deploys at the root URL:
+`https://aloktripathi1.github.io`
+
+For any other repository name, the site deploys under the repository path:
+`https://aloktripathi1.github.io/<repo-name>`
+
+You can always override the canonical URL by setting `NEXT_PUBLIC_SITE_URL` in GitHub Actions.
 
 1. In your GitHub repository, open Settings > Pages.
 2. Set Source to `GitHub Actions`.
